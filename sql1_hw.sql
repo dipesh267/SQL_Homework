@@ -77,10 +77,12 @@ join payment p using(staff_id)
 where p.payment_date between '2005-08-01' and '2005-08-31'
 order by payment_date;
 
-#6c !!!!!!!!!!!!!!!!!!!!!!!
-select f.film_id, f.title, fa.actor_id
+#6c 
+select f.title, count(fa.actor_id) as actor_count
 from film f
-join film_actor fa using(film_id);
+join film_actor fa using(film_id)
+group by f.title
+order by actor_count desc;
 
 #6d
 select count(*) from film
